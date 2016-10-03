@@ -1,0 +1,6 @@
+framework module YWeatherAPI {
+  umbrella header "YWeatherAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
