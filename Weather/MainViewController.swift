@@ -13,13 +13,14 @@ import GoogleMaps
 import CoreLocation
 
 
-class ViewController: UIViewController, UICollectionViewDataSource, CLLocationManagerDelegate {
+class ViewController: UIViewController, UICollectionViewDataSource, CLLocationManagerDelegate, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var unitsButton: UIButton!
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -33,6 +34,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, CLLocationMa
     var weatherIcon: String?
     
     var weatherJSON: JSON!
+    
+    var units: String = "metric"
+    var count = 1
     
     //User Location:
     var locationManager = CLLocationManager()
@@ -96,6 +100,34 @@ class ViewController: UIViewController, UICollectionViewDataSource, CLLocationMa
         return dateArranged
     }
     
+    @IBAction func unitsButton(_ sender: AnyObject) {
+        print("Pressed")
+        
+        if count == 0 {
+            units = "metric"
+            unitsButton.setTitle("°C", for: .normal)
+            print("metric")
+            locationManager.startUpdatingLocation()
+            collectionView.reloadData()
+            
+            self.count = 1
+        } else if count == 1 {
+            units = "imperial"
+            unitsButton.setTitle("°F", for: .normal)
+            self.count = 2
+            locationManager.startUpdatingLocation()
+            collectionView.reloadData()
+            print("imperial")
+        } else if count == 2 {
+            units = "standard"
+            unitsButton.setTitle("K", for: .normal)
+            print("standard")
+            locationManager.startUpdatingLocation()
+            collectionView.reloadData()
+            count = 0
+        }
+    }
+    
     func getDayOfWeek(_ today:String) -> String? {
         
         let weekdays = [1:"Sunday", 2:"Monday", 3:"Tuesday", 4:"Wednesday", 5:"Thursday", 6:"Friday", 7:"Saturday"]
@@ -140,7 +172,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, CLLocationMa
             print(long)
             print(lat)
             locationManager.stopUpdatingLocation()
-            getWeather(latitude: lat, longitude: long, units: "metric", days: 7)
+            getWeather(latitude: lat, longitude: long, units: units, days: 7)
         }
         //Do What ever you want with it
     }
@@ -160,10 +192,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, CLLocationMa
         }
     }
     
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let screenWidth = collectionView.bounds.width
         let screenHeight = collectionView.bounds.height
-        let size = CGSize.init(width: (screenWidth/4), height: screenHeight)
+        let size = CGSize.init(width: (screenWidth/3)-2, height: screenHeight)
         
         return size
     }
@@ -220,7 +252,7 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         self.searchController?.searchBar.text = place.name
         
         
-        getWeather(latitude: latitude, longitude: longitude, units: "metric", days: 7)
+        getWeather(latitude: latitude, longitude: longitude, units: units, days: 7)
         collectionView.reloadData()
         
     }

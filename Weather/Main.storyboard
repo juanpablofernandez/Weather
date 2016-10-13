@@ -13,7 +13,7 @@
         <scene sceneID="mjF-QO-LDs">
             <objects>
                 <navigationController id="1tS-YU-ubN" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="S5N-aU-Whq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S5N-aU-Whq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -69,6 +69,12 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <state key="normal" title="°C"/>
+                                                <state key="highlighted">
+                                                    <color key="titleColor" red="0.65418669871794877" green="0.65418669871794877" blue="0.65418669871794877" alpha="1" colorSpace="calibratedRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="unitsButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ib1-9M-d1W"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -94,7 +100,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-H9-PGy" userLabel="Bottom View">
                                         <subviews>
-                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-W4-B6o">
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="7tp-W4-B6o">
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" id="JYZ-Hv-JLY">
                                                     <size key="itemSize" width="111" height="170"/>
@@ -104,7 +110,7 @@
                                                 </collectionViewFlowLayout>
                                                 <cells>
                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="Cell" id="XOB-Lw-6r2" customClass="CollectionViewCell" customModule="Weather" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="16" width="111" height="170"/>
+                                                        <rect key="frame" x="0.0" y="15.5" width="111" height="170"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                             <rect key="frame" x="0.0" y="0.0" width="111" height="170"/>
@@ -126,7 +132,7 @@
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-uY-UCr" userLabel="Bottom Label">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="x0B-uY-UCr" userLabel="Bottom Label">
                                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -139,7 +145,7 @@
                                                             <constraint firstItem="Zej-8u-Wed" firstAttribute="centerX" secondItem="XOB-Lw-6r2" secondAttribute="centerX" id="1zt-oX-6z4"/>
                                                             <constraint firstItem="SWD-tK-aav" firstAttribute="width" secondItem="XOB-Lw-6r2" secondAttribute="width" id="3Ef-pA-RoB"/>
                                                             <constraint firstItem="p9k-bu-hmf" firstAttribute="centerX" secondItem="XOB-Lw-6r2" secondAttribute="centerX" id="7wm-vm-hRc"/>
-                                                            <constraint firstItem="Zej-8u-Wed" firstAttribute="width" secondItem="AAA-Lp-p18" secondAttribute="width" multiplier="0.9" id="ADB-Un-7rv"/>
+                                                            <constraint firstItem="Zej-8u-Wed" firstAttribute="width" secondItem="AAA-Lp-p18" secondAttribute="width" multiplier="0.95" id="ADB-Un-7rv"/>
                                                             <constraint firstItem="AAA-Lp-p18" firstAttribute="height" secondItem="XOB-Lw-6r2" secondAttribute="height" multiplier="0.2" id="Ajv-KQ-wAi"/>
                                                             <constraint firstItem="x0B-uY-UCr" firstAttribute="width" secondItem="Zej-8u-Wed" secondAttribute="width" multiplier="0.9" id="EkF-D0-uQh"/>
                                                             <constraint firstItem="SWD-tK-aav" firstAttribute="centerX" secondItem="XOB-Lw-6r2" secondAttribute="centerX" id="Hzm-bq-X6e"/>
@@ -147,13 +153,13 @@
                                                             <constraint firstItem="x0B-uY-UCr" firstAttribute="top" secondItem="Zej-8u-Wed" secondAttribute="bottom" id="KdW-LG-CHu"/>
                                                             <constraint firstItem="x0B-uY-UCr" firstAttribute="centerX" secondItem="XOB-Lw-6r2" secondAttribute="centerX" id="O6e-Rd-daY"/>
                                                             <constraint firstItem="AAA-Lp-p18" firstAttribute="centerX" secondItem="XOB-Lw-6r2" secondAttribute="centerX" id="Wyo-pQ-QPM"/>
+                                                            <constraint firstAttribute="bottomMargin" secondItem="x0B-uY-UCr" secondAttribute="bottom" constant="2" id="ZPj-0m-1mw"/>
                                                             <constraint firstItem="Zej-8u-Wed" firstAttribute="height" secondItem="XOB-Lw-6r2" secondAttribute="height" multiplier="0.3" id="i9V-74-gyE"/>
                                                             <constraint firstAttribute="topMargin" secondItem="AAA-Lp-p18" secondAttribute="top" id="oPk-Cg-pWV"/>
                                                             <constraint firstItem="SWD-tK-aav" firstAttribute="centerY" secondItem="XOB-Lw-6r2" secondAttribute="centerY" id="pfA-fE-xTP"/>
                                                             <constraint firstItem="Zej-8u-Wed" firstAttribute="top" secondItem="p9k-bu-hmf" secondAttribute="bottom" id="swa-Hd-abs"/>
                                                             <constraint firstItem="AAA-Lp-p18" firstAttribute="width" secondItem="XOB-Lw-6r2" secondAttribute="width" multiplier="0.9" id="vEt-GK-2Rs"/>
                                                             <constraint firstItem="p9k-bu-hmf" firstAttribute="top" secondItem="AAA-Lp-p18" secondAttribute="bottom" id="vLH-ZV-nvd"/>
-                                                            <constraint firstItem="x0B-uY-UCr" firstAttribute="height" secondItem="XOB-Lw-6r2" secondAttribute="height" multiplier="0.2" id="xkY-cq-mNT"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -216,6 +222,7 @@
                         <outlet property="dateLabel" destination="LGZ-om-Y1P" id="i04-oR-Vmn"/>
                         <outlet property="imageView" destination="rah-TI-wH6" id="MMT-LC-tCc"/>
                         <outlet property="tempLabel" destination="Xbc-Yi-Pga" id="7na-NO-tlD"/>
+                        <outlet property="unitsButton" destination="ZT4-CQ-xC7" id="Dex-9J-bxQ"/>
                         <outlet property="weatherLabel" destination="dcu-O3-NRk" id="YrR-gn-R2h"/>
                     </connections>
                 </viewController>
@@ -236,7 +243,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vTF-sc-ckh" id="zzb-fl-JK9">
-                                    <frame key="frameInset" width="375" height="43"/>
+                                    <frame key="frameInset" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
